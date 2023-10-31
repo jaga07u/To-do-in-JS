@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container"><h1>To-do-list</h1>
+        <input type="text" placeholder="Enter task">
+        <button id="add">Add</button>
+        <ul>
+        <div id="taskItems"></div>
+        </ul>
+    </div>
+</body>
+<script>
+    const input=document.querySelector("input");
+    const btn=document.querySelector("#add");
+    const tasks=document.querySelector("#taskItems");
+    btn.addEventListener("click",()=>{
+        var textInput=input.value;
+        if(textInput){
+        var items=document.createElement("li");
+        items.innerHTML=`${input.value} <input type="checkbox" id="check">`;
+        tasks.appendChild(items);
+        input.value="";
+         const check=items.querySelector("#check");
+
+           check.addEventListener("click",()=>{
+            setTimeout(()=>{
+            if(check.checked){
+                items.remove();
+            }
+        },1000)
+           })
+        }
+    })
+</script>
+</html>
